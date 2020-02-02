@@ -10,7 +10,8 @@
         "build:types": "tsc --emitDeclarationOnly",
         "build:js": "babel src build/dev/generated --out-dir build/dev/babel --extensions \".ts,.tsx\" --source-maps inline",
         "build": "npm run generate:compress && npm run build:types && npm run build:js",
-        "bundle": "npm run build && webpack --display-modules --progress --info-verbosity verbose --display-error-details"
+        "bundle": "npm run build && webpack --display-modules --progress --info-verbosity verbose --display-error-details",
+        "test": "node ./build/dist/bundle.js"
     },
     "repository": {
         "type": "git",
