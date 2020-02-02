@@ -6,9 +6,15 @@ const readline = require("readline")
 const inputDir = 'data';
 
 const outputDir = process.argv[2];
-const dataDir = path.join(outputDir, 'compressed_data');
 
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+const dirParts = path.join(outputDir, 'compressed_data').split(path.sep);
+
+const dataDir = dirParts.reduce((prev, curr) => {
+    const dataDir = path.join(prev, curr);
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir);
+    return dataDir;
+}, '');
+
 
 new Promise((resolve, reject) => fs.readdir(inputDir, (err, files) => err ? reject(err) : resolve(files)))
     .then(files => Promise.all(files.map(basename => new Promise((resolve, reject) => {
