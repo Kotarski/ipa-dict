@@ -3,6 +3,7 @@ const fs = require('fs');
 const readline = require('readline');
 const path = require('path');
 
+// Create directories as needed
 function mkdirs(newPath) {
     return newPath.split(path.sep).reduce((prev, curr) => {
         const newDir = path.join(prev, curr);
@@ -18,7 +19,7 @@ const genDataGenPath = mkdirs("generated_data");
 function getTemplatedFile(relativeImportPaths) {
     const lines = [].concat(relativeImportPaths.map((relativeImportPath, i) => `import json${i} from "${relativeImportPath}";`));
     lines.push(`const merged = [].concat(${relativeImportPaths.map((_, i) => `Object.entries(json${i})`).join(',')});`);
-    lines.push(`export default new Map(merged);`)
+    lines.push(`export default new Map(merged);`);
     return lines.join('\n');
 };
 
@@ -74,8 +75,6 @@ async function processDataPath(dataPath, entriesOutDir, dataOutDir) {
 
     const outputDataPaths = await rewriteDataToJson(dataPath, dataOutDir);
 
-
-
     const relativeImportPaths = outputDataPaths.map(outputDataPath => path.posix.relative(entriesOutDir, outputDataPath));
 
     const entryPromise = new Promise((resolve, reject) => {
@@ -83,13 +82,14 @@ async function processDataPath(dataPath, entriesOutDir, dataOutDir) {
     });
 
     return entryPromise;
-
-
 }
 
 
-glob(path.join(dataDirPath, "*.txt"), {}, (err, dataPaths) => {
-    if (err) throw new err;
-    Promise.all(dataPaths.map(dataPath => processDataPath(dataPath, genEntriesDirPath, genDataGenPath))).then(() => console.log("done"))
-});
+function main() {
+    glob(path.join(dataDirPath, "*.txt"), {}, (err, dataPaths) => {
+        if (err) throw new err;
+        Promise.all(dataPaths.map(dataPath => processDataPath(dataPath, genEntriesDirPath, genDataGenPath))).then(() => console.log("Ipa-dict entries generated"));
+    });
+}
 
+main();
