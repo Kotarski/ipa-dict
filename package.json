@@ -6,6 +6,9 @@
     "exports": {
         "./": "./lib/"
     },
+    "files": [
+        "lib/"
+    ],
     "scripts": {
         "prepare": "node src/generate.js && webpack"
     },
