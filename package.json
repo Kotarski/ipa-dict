@@ -2,16 +2,12 @@
     "name": "ipa-dict",
     "version": "1.0.0",
     "description": "This project aims to provide a series of dictionaries consisting of wordlists with accompanying phonemic pronunciation information in International Phonetic Alphabet (IPA) transcription for as many words as possible in as many languages / dialects / variants as possible.",
-    "main": "build/dist/bundle.js",
+    "main": "",
+    "exports": {
+        "./": "./lib/"
+    },
     "scripts": {
-        "type-check": "tsc --noEmit",
-        "type-check:watch": "npm run type-check -- --watch",
-        "generate:compress": "node src/compress.js build/dev/generated",
-        "build:types": "tsc --emitDeclarationOnly",
-        "build:js": "babel src build/dev/generated --out-dir build/dev/babel --extensions \".ts,.tsx\" --source-maps inline",
-        "build": "npm run generate:compress && npm run build:types && npm run build:js",
-        "bundle": "npm run build && webpack --display-modules --progress --info-verbosity verbose --display-error-details",
-        "test": "node ./build/dist/bundle.js"
+        "prepare": "node src/generate.js && webpack"
     },
     "repository": {
         "type": "git",
@@ -24,31 +20,12 @@
     },
     "homepage": "https://github.com/Kotarski/ipa-dict#readme",
     "devDependencies": {
-        "@babel/cli": "^7.8.4",
-        "@babel/core": "^7.8.4",
-        "@babel/plugin-proposal-class-properties": "^7.8.3",
-        "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-        "@babel/plugin-transform-runtime": "^7.8.3",
-        "@babel/preset-env": "^7.8.4",
-        "@babel/preset-typescript": "^7.8.3",
-        "awesome-typescript-loader": "^5.2.1",
-        "babel-loader": "^8.0.6",
-        "cross-env": "^5.2.1",
-        "file-loader": "^5.0.2",
-        "hard-source-webpack-plugin": "^0.13.1",
-        "raw-loader": "^4.0.0",
-        "ts-loader": "^5.4.5",
-        "tslint": "^5.20.1",
-        "tslint-no-circular-imports": "^0.6.1",
-        "typescript": "^3.7.5",
-        "webpack": "^4.41.5",
-        "webpack-cli": "^3.3.10",
-        "webpack-node-externals": "^1.7.2",
-        "webpack-shell-plugin": "^0.5.0"
+        "@types/node": "^13.13.38",
+        "file-system": "^2.2.2",
+        "glob": "^7.1.6",
+        "webpack": "^4.44.2",
+        "webpack-cli": "^3.3.12",
+        "webpack-node-externals": "^1.7.2"
     },
-    "dependencies": {
-        "@babel/runtime": "^7.8.4",
-        "@types/node": "^13.7.0",
-        "lz4": "^0.6.3"
-    }
+    "dependencies": {}
 }
