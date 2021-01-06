@@ -3,7 +3,9 @@ const nodeExternals = require('webpack-node-externals');
 const glob = require("glob");
 const path = require("path");
 
-const entries = Object.fromEntries(glob.sync("./generated_entries/*.js").map(entryPath => [path.basename(entryPath, '.js'), entryPath]));;
+const entries = glob.sync("./generated_entries/*.js").reduce((obj, entryPath) => ({
+    ...obj, [path.basename(entryPath, '.js')]: entryPath
+}), {});
 
 module.exports = {
     mode: "production",
