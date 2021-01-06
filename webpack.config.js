@@ -14,6 +14,7 @@ module.exports = {
         filename: '[name].js',
         library: 'ipa-dict',
         libraryTarget: 'umd',
+        libraryExport: 'default',
         globalObject: 'this'
     },
     resolve: {
