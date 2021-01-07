@@ -9,7 +9,8 @@
         "lib/"
     ],
     "scripts": {
-        "prepare": "node src/generate.js && webpack"
+        "prepare": "node src/generate.js && webpack",
+        "test": "mocha"
     },
     "repository": {
         "type": "git",
@@ -25,6 +26,8 @@
         "@types/node": "^13.13.38",
         "file-system": "^2.2.2",
         "glob": "^7.1.6",
+        "mocha": "^8.2.1",
+        "npm-run-all": "^4.1.5",
         "webpack": "^4.44.2",
         "webpack-cli": "^3.3.12",
         "webpack-node-externals": "^1.7.2"
