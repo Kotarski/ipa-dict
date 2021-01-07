@@ -23,8 +23,7 @@
     },
     "homepage": "https://github.com/Kotarski/ipa-dict#readme",
     "devDependencies": {
-        "@types/node": "^13.13.38",
-        "file-system": "^2.2.2",
+        "@types/node": "^13.13.39",
         "glob": "^7.1.6",
         "mocha": "^8.2.1",
         "webpack": "^4.44.2",
