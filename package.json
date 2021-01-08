@@ -1,6 +1,6 @@
 {
     "name": "ipa-dict",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "This project aims to provide a series of dictionaries consisting of wordlists with accompanying phonemic pronunciation information in International Phonetic Alphabet (IPA) transcription for as many words as possible in as many languages / dialects / variants as possible.",
     "engines": {
         "node": ">=12.0.0"
