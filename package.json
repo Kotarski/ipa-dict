@@ -9,7 +9,7 @@
         "lib/"
     ],
     "scripts": {
-        "prepare": "node src/generate.js && webpack",
+        "prepare": "node src/generate.js && cross-env NODE_OPTIONS=--max_old_space_size=4096 webpack",
         "test": "mocha"
     },
     "repository": {
@@ -24,6 +24,7 @@
     "homepage": "https://github.com/Kotarski/ipa-dict#readme",
     "devDependencies": {
         "@types/node": "^13.13.39",
+        "cross-env": "^7.0.3",
         "glob": "^7.1.6",
         "mocha": "^8.2.1",
         "webpack": "^4.44.2",

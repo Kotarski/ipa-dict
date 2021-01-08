@@ -27,8 +27,5 @@ module.exports = {
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
     externals: [nodeExternals()],
-    target: "node",
-    optimization: {
-        minimize: false,
-    },
+    target: "node"
 };
